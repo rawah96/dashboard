@@ -1,0 +1,1 @@
+/* This component contains horizontal bar for the data */
