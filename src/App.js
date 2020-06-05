@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Cards, PieChart, LineChart, Today, DataTable} from './components'
+import {Cards, PieChart, LineChart, Today, DataTable, Donut, NavbarMenu, WorldMap} from './components'
 import {fetchData, fetchGender, fetchToday, fetchStats, cardsData, tableData} from './data/'
 import {Grid, Paper, TableCell} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,7 +13,9 @@ class App extends Component {
     today:{},
 
     loading: false,
-    stats:[]
+    stats:[], 
+
+    mapInfo: []
   }
 
 
@@ -34,10 +36,18 @@ class App extends Component {
     .then(data => {
       this.setState({stats:data, loading:false})
     })
+
+    //const url2 = 'https://api.covid19api.com/all'
+    const url2 = 'https://corona.lmao.ninja/v2/countries'
+    fetch(url2)
+    .then(res => res.json())
+    .then(data2 => {
+      this.setState({mapInfo:data2})
+    })
   }
 
     // change the state of the country [chosen from options]
-  handleChange = async(country) => {
+    handleChange = async(country) => {
     const data = await fetchData(country);
     this.setState({data, country: country});
 
@@ -46,8 +56,7 @@ class App extends Component {
   }
 
   render() {
-    const {data, country, gender, today, stats} = this.state;
-
+    const {data, country, gender, today, stats, mapInfo} = this.state;
   return (
     <div>
       {/* ****************ADD STYLES*************** */}
@@ -84,8 +93,10 @@ class App extends Component {
         <Grid item xs={6} sm={3}>
           <Paper>xs=6 sm=3</Paper>
         </Grid>
-      </Grid>*/}
-      <DataTable stats={stats}/>
+      </Grid>
+  <Donut stats={stats}/>
+  <DataTable stats={stats}/>*/}
+  <WorldMap mapInfo={mapInfo}/>
     </div>
   );
   }

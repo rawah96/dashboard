@@ -1,11 +1,7 @@
 // fetching data here
 /* postman URLs: 
- 
 https://thevirustracker.com/free-api?global=stats : global stats 
-
 https://thevirustracker.com/timeline/map-data.json : country daily stats
-
-
 https://covid2019-api.herokuapp.com/
 
 */
@@ -37,8 +33,6 @@ export const fetchCountries = async () => {
   }
 };
 
-
-
 /*export const fetchAge = () => {
   const ages  = 'https://covid19-server.chrismichael.now.sh/api/v1/FatalityRateByAge'
   fetch(ages)
@@ -64,7 +58,6 @@ export const fetchGender = async () => {
     return error;
   }
 };
-
 
 export const fetchToday = async () => {
   const url = 'https://api.thevirustracker.com/free-api?global=stats'
