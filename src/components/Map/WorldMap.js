@@ -21,7 +21,8 @@ const WorldMap  = ({mapInfo}) => {
                 width:'35px',
                 textAlign: 'center',
                 borderRadius:"50%"
-            }}
+            }
+        }
           >
 
               <h5>              

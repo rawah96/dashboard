@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Cards, PieChart, LineChart, Today, DataTable, Donut, NavbarMenu, WorldMap} from './components'
-import {fetchData, fetchGender, fetchToday, fetchStats, cardsData, tableData} from './data/'
+import {Cards, PieChart, BarChart, LineChart,Today, DataTable, Donut, NavbarMenu, WorldMap} from './components'
+import {fetchData, fetchGender, fetchToday, fetchStats, cardsData, tableData, fetchDailyData} from './data/'
 import {Grid, Paper, TableCell} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -15,7 +15,8 @@ class App extends Component {
     loading: false,
     stats:[], 
 
-    mapInfo: []
+    mapInfo: [],
+    dailyData:{},
   }
 
 
@@ -44,6 +45,10 @@ class App extends Component {
     .then(data2 => {
       this.setState({mapInfo:data2})
     })
+
+    /* daily data
+    const daily = await fetchDailyData();
+    this.setState({dailyData: daily})*/
   }
 
     // change the state of the country [chosen from options]
@@ -95,9 +100,10 @@ class App extends Component {
         </Grid>
       </Grid>
   <Donut stats={stats}/>
-  <DataTable stats={stats}/>*/}
-  <WorldMap mapInfo={mapInfo}/>
-    </div>
+  <DataTable stats={stats}/>
+  <WorldMap mapInfo={mapInfo}/>*/}
+  <LineChart/>
+  </div>
   );
   }
 }

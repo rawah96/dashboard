@@ -66,3 +66,15 @@ export const fetchToday = async () => {
     return {country, cases};
   } catch(error) {return error}
 }
+
+export const fetchDailyData = async() => {
+  const dailyurl = 'https://covid19.mathdro.id/api/daily';
+  try{
+      const {data} = await Axios.get(dailyurl);
+      return data.map(({confirmed, deaths, recovered, reportDate:date}) => ({
+          confirmed: confirmed.total, recovered: recovered.total,
+          deaths: deaths.total, date
+      }));
+   } catch(error) {return error;}
+}
+

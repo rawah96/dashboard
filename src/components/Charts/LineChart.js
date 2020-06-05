@@ -1,71 +1,47 @@
 import React, { Component } from 'react';
-import {Bar, Line, Doughnut, Pie, HorizontalBar} from 'react-chartjs-2';
+import {Bar, Line, HorizontalBar} from 'react-chartjs-2'
+import {fetchDailyData} from '../../data'
 
 
-/*const LineChart = ({data: {confirmed, recovered, deaths, lastUpdate, country}}) => {
+class LineChart extends Component {
+  state = {
+    dailyData: {}
+}
 
-const LineChart =(
-    confirmed?
-      <Line
-         data={{
-             labels: ['Infected','Recovered','Deaths'],
-             labels: [],
-             datasets: [{
-               label: 'People',
-               backgroundColor: ['rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)'],
-               data : [confirmed.value,recovered.value,deaths.value]
-             }]
-  
-         }}
-         options = {{
-            legends : {display:false},  
-         }}
-      />
-     : null
+async componentDidMount() {
+    const fetchApi = await fetchDailyData();
+    this.setState({dailyData:fetchApi})
+}
+
+
+  render() {
+    const lineChart = (
+      this.state.dailyData[0] ? 
+      //this.state.dailyData.length != 0 ?
+      <Line 
+        data={{ 
+            // loop through dailyData
+            labels:this.state.dailyData.map(({date}) => date), 
+            datasets: [{
+                data: this.state.dailyData.map(({confirmed}) => confirmed),
+                label: 'infected',
+                fill:false, // fills space below the chart
+                backgroundColor: 'light grey',
+                borderJoinStyle: 'miter',
+                borderWidth: 1
+            },{
+              data: this.state.dailyData.map(({deaths}) => deaths),
+              label: 'Deaths',
+              borderColor: 'pink',
+              backgroundColor: 'grey',
+              fill:false
+            }]
+        }} 
+      /> : null
   );
+    return <> {lineChart} </>
+  } 
 
-  return(
-    <div>
-    {confirmed ? LineChart : null}
-    </div>
-  )
-  }*/
-
-  // make it one pie for males and other for females?
-  const LineChart = ({gender}) => {
-    var firstRow = gender[0]
-    var result = parseFloat(firstRow)
-
-    var secondRow = gender[1]
-    var result2 = parseFloat(secondRow)
-
-
-    const LineChart =(
-      gender[0]?
-          <HorizontalBar
-             data={{
-                 labels: ['Male','Female'],
-                 datasets: [{
-                   label: 'People',
-                   backgroundColor: ['rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)'],
-                   //data : [confirmed.value,recovered.value,deaths.value]
-                   data:[result,result2]
-                 }]
-      
-             }}
-             options = {{
-                legends : {display:false},  
-             }}
-          />
-         : null
-      );
-    
-      return(
-        <div>
-        {/*confirmed ? LineChart : null*/}
-        {LineChart}
-        </div>
-      )
-      }
+}
 
 export default LineChart
