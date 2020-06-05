@@ -70,6 +70,8 @@ const DataTable  = ({stats}) => {
     rows: [
     ]
   }*/
+
+  /* TODO: styles + search */
   return(     
     <div>
       <TableContainer component={Paper}>
@@ -77,6 +79,9 @@ const DataTable  = ({stats}) => {
         <TableHead>
           <TableCell> Country </TableCell>
           <TableCell> Confirmed</TableCell>
+          <TableCell> Deaths </TableCell>
+          <TableCell> Recovered </TableCell>
+
         </TableHead>
 
         <TableBody>
@@ -87,6 +92,9 @@ const DataTable  = ({stats}) => {
                   {item.country}
                 </TableCell>
                 <TableCell>{item.cases}</TableCell>
+                <TableCell>{item.deaths}</TableCell>
+                <TableCell>{item.recovered}</TableCell>
+
             </TableRow>)) : null}
 
           
