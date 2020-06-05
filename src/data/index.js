@@ -69,19 +69,7 @@ export const fetchGender = async () => {
 export const fetchToday = async () => {
   const url = 'https://api.thevirustracker.com/free-api?global=stats'
   try {
-    const {data} = await Axios.get(url)
-    return data;
+    const {data: {country, cases}} = await Axios.get(url)
+    return {country, cases};
   } catch(error) {return error}
 }
-
-
-/* get the MIN/MAX countries for confirmed cases globally 
-
-export const fetchStats = async() => {
-  const url = 'https://covid19.mathdro.id/api/countries'
-  try {
-    const { data: { countries } }  = await Axios.get(url)
-    return countries.map((country, i) => (country.name, i));
-
-  } catch(error) {return error}
-}*/

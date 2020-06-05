@@ -74,12 +74,11 @@ const PieChart = (props) => {
             <h1>confirmed: {confirmed.value}</h1>
             {PieChart}
 
-            <select defaultValue="" onChange={(e) => props.handleChange(e.target.value)}>
+            <select defaultValue="" onChange={(e) => (props.handleChange(e.target.value))}>
                 <option value=""> globally </option>
                 {countries.map((country,i) => <option key={i} value={country}>{country}
                 </option>)}
             </select>
-
 
             {/*
             <TableContainer component={Paper}>

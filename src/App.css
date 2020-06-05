@@ -1,5 +1,6 @@
-.App {
-  text-align: center;
+*{
+  background-color: light;
+  justify-content: center
 }
 
 .App-logo {

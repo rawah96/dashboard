@@ -1,15 +1,21 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Cards, PieChart, LineChart, Today} from './components'
-import {fetchData, fetchGender, fetchToday, fetchStats, cardsData} from './data/'
+import {Cards, PieChart, LineChart, Today, DataTable} from './components'
+import {fetchData, fetchGender, fetchToday, fetchStats, cardsData, tableData} from './data/'
+import {Grid, Paper, TableCell} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles';
 
 class App extends Component {
   state = {
     data: {},
     country:'',
     gender: {},
-    today:{}
+    today:{},
+
+    loading: false,
+    stats:[]
   }
+
 
   async componentDidMount() {
     const data = await fetchData();
@@ -21,27 +27,65 @@ class App extends Component {
     const casesToday = await fetchToday();
     //const today = casesToday.results[0].total_new_cases_today;
     //this.setState({today:today})
+    const url = 'https://coronavirus-19-api.herokuapp.com/countries'
+    this.setState({loading:true})
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      this.setState({stats:data, loading:false})
+    })
   }
 
     // change the state of the country [chosen from options]
   handleChange = async(country) => {
     const data = await fetchData(country);
     this.setState({data, country: country});
+
     //const all = {data, country: country};
     //return all;
   }
 
   render() {
-    const {data, country, gender, today} = this.state;
+    const {data, country, gender, today, stats} = this.state;
 
   return (
-    <div className="App">
-      {/*<Cards data={data}/>
-      <PieChart handleChange={this.handleChange}/>*/}
-      <PieChart handleChange={this.handleChange} data={data}/>
-      <LineChart gender={gender}/>
-      <Today today={today}/>
-      
+    <div>
+      {/* ****************ADD STYLES*************** */}
+      {/*<Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Paper>
+            <Cards data={data}/>
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <Paper>
+            <PieChart handleChange={this.handleChange} data={data}/>
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12} sm={6}>
+          <Paper>
+            <Today today={today}/>
+          </Paper>
+        </Grid>
+
+        <Grid item xs={6} sm={3}>
+          <Paper>
+            <LineChart gender={gender}/>
+          </Paper>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Paper>xs=6 sm=3</Paper>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Paper>xs=6 sm=3</Paper>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Paper>xs=6 sm=3</Paper>
+        </Grid>
+      </Grid>*/}
+      <DataTable stats={stats}/>
     </div>
   );
   }
