@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import Countup from 'react-countup'
 
 //const AnyReactComponent = ({ text }) => <div>{text}</div>;
 const WorldMap  = ({mapInfo}) => {
@@ -14,15 +15,25 @@ const WorldMap  = ({mapInfo}) => {
             lat={item.countryInfo.lat}
             lng={item.countryInfo.long}
             style = {{
-                color:'grey',
+                color:'white',
                 backgroundColor: 'black',
                 height:'25px',
-                width:'35px'
+                width:'35px',
+                textAlign: 'center',
+                borderRadius:"50%"
             }}
           >
-            {item.cases}
-          </div>
-      )
+
+              <h5>              
+                <br/>
+                <Countup
+                start={item.cases}
+                end={item.cases}
+                separator=','
+                />
+              </h5>
+
+          </div>)
     } 
     )
 
@@ -34,7 +45,8 @@ const WorldMap  = ({mapInfo}) => {
             lat: 59.95,
             lng: 30.33  
         }}
-            defaultZoom={10}>
+            defaultZoom={4.5}
+            >
             {Mapping}
         </GoogleMapReact>
         </div>
