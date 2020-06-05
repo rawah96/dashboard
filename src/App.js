@@ -5,6 +5,7 @@ import {fetchData, fetchGender, fetchToday, fetchStats, cardsData, tableData, fe
 import {Grid, Paper, TableCell} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 
+
 class App extends Component {
   state = {
     data: {},
@@ -100,9 +101,13 @@ class App extends Component {
         </Grid>
       </Grid>
   <Donut stats={stats}/>
-  <DataTable stats={stats}/>
-  <WorldMap mapInfo={mapInfo}/>*/}
-  <LineChart/>
+    <LineChart/>
+        <WorldMap mapInfo={mapInfo}/>
+
+    */}
+    
+    <DataTable stats={stats}/>
+
   </div>
   );
   }

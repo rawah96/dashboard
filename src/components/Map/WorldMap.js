@@ -21,22 +21,15 @@ const WorldMap  = ({mapInfo}) => {
                 width:'35px',
                 textAlign: 'center',
                 borderRadius:"50%"
-            }
-        }
-          >
+            }}>
 
-              <h5>              
-                <br/>
+              <h5><br/>
                 <Countup
                 start={item.cases}
                 end={item.cases}
                 separator=','
-                />
-              </h5>
-
-          </div>)
-    } 
-    )
+                /></h5>
+          </div>)})
 
     return (
         <div style={{ height: '100vh', width: '100%' }}>

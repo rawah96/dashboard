@@ -1,0 +1,27 @@
+* {
+    scroll-padding: 20px;
+    visibility: visible;
+    text-justify: inter-word;
+}
+
+.container {
+    align-items: center;
+    margin: 10px 0;
+}
+
+.cases:hover {
+    /*background-color: teal;*/
+    text-shadow: teal 1px 0 10px;
+}
+
+.cases:active {
+    background-color: lightsteelblue
+}
+
+
+.id {
+    background-color: lightseagreen;
+    font-size: 1.2rem !important;
+    font-weight: bolder !important;
+    color: white !important;
+}

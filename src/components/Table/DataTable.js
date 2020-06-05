@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TableContainer, Table,TableHead, TableRow, TableCell, Paper, TableBody, SelectField, MenuItem} from '@material-ui/core';
 import { MDBDataTable } from 'mdbreact';
+import style from './Table.module.css'
 
 const DataTable  = ({stats}) => {
   if(!stats) {
@@ -55,21 +56,19 @@ const DataTable  = ({stats}) => {
     ]
   }*/
 
-  return(<div>
-    <div>
-      <TableContainer component={Paper}>
+  return(
+      <TableContainer component={Paper} className={style.container}>
       <Table>
         <TableHead>
-          <TableCell> Country </TableCell>
-          <TableCell> Confirmed</TableCell>
-          <TableCell> Deaths </TableCell>
-          <TableCell> Recovered </TableCell>
-
+          <TableCell className={style.id}> Country </TableCell>
+          <TableCell className={style.id}> Confirmed</TableCell>
+          <TableCell className={style.id}> Deaths </TableCell>
+          <TableCell className={style.id}> Recovered </TableCell>
         </TableHead>
         <TableBody>
           { (stats.length > 0)? 
             stats.map((item, i) => (
-              <TableRow key= {item.country}>
+              <TableRow key= {item.country}  className={style.cases}>
                 <TableCell component="th" scope="row">
                   {item.country}
                 </TableCell>
@@ -80,7 +79,6 @@ const DataTable  = ({stats}) => {
         </TableBody>
       </Table>
       </TableContainer>
-    </div>
-  </div>)
+  )
 }
 export default DataTable;
