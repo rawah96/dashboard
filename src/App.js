@@ -78,8 +78,11 @@ class App extends Component {
     <container style={{height:'100%'}}>
       
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           <Paper><PieChart handleChange={this.handleChange} data={data}/></Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper> <Donut stats={stats}/> </Paper>
         </Grid>
 
         <Grid item xs={12} sm={6}><BarChart gender={gender}/></Grid>

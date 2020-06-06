@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Doughnut} from 'react-chartjs-2'
+import './Donut.css'
 
 const Donut = ({stats}) => {
 if(!stats || !stats[0]) {
@@ -24,8 +25,10 @@ const Donut =(
     />
 );
 
-    return (<div>
-        <h1>Global total</h1>
+    return (<div className="doughnut">
+        <h2> Global total number of 
+            <br/>
+            confirmed, critical, deaths, and recovered cases </h2>
         {Donut}
         </div>
         )

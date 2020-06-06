@@ -1,0 +1,14 @@
+.doughnut {
+    box-shadow: 2ch;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+    color: grey;
+    text-shadow: lightskyblue;
+}
+
+@media only screen and (max-width: 770px) {
+    .container {
+      width: 100%;
+    }
+}

@@ -107,7 +107,7 @@ const PieChart = (props) => {
             className="choose"
             align='center'
             >
-                <option value=""> globally </option>
+                <option value=""> Choose a country to display statistics </option>
                 {countries.map((country,i) => <option key={i} value={country}>{country}
                 </option>)}
             </select>
