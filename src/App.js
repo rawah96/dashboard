@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Cards, PieChart, BarChart, LineChart,Today, DataTable, Donut, NavbarMenu, WorldMap} from './components'
+import {Home, About, Contact,
+  Cards, PieChart, BarChart, LineChart,Today,
+  DataTable, Donut, NavbarMenu, WorldMap} from './components'
 import {fetchData, fetchGender, fetchToday, fetchStats, cardsData, tableData, fetchDailyData} from './data/'
 import {Grid, Paper, TableCell} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -103,12 +105,17 @@ class App extends Component {
   <Donut stats={stats}/>
     <LineChart/>
         <WorldMap mapInfo={mapInfo}/>
-
+            <DataTable stats={stats}/>
     */}
-    
-    <DataTable stats={stats}/>
+
+<React.Fragment>
+  <Router>
+  <NavbarMenu/>
+  </Router>
+</React.Fragment>
 
   </div>
+
   );
   }
 }

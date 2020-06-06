@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
-class About extends Component {
-  render() {
+const GridWrapper = styled.div`
+  display: grid;
+  grid-gap: 10px;
+  margin-top: 1em;
+  margin-left: 6em;
+  margin-right: 6em;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(25px, auto);
+`; 
+
+const About = () => {
     return (
-        <div>
-          <h2>About</h2>
-        </div>
+        <GridWrapper>
+          <h3>About page</h3>
+        </GridWrapper>
     );
-  }
+  
 }
 
 export default About;
