@@ -1,11 +1,7 @@
 *{
   background-color: light;
-  justify-content: center
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  justify-content: center;
+  align-content: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {

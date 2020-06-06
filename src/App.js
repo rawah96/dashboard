@@ -6,7 +6,7 @@ import {Home, About, Contact,
 import {fetchData, fetchGender, fetchToday, fetchStats, cardsData, tableData, fetchDailyData} from './data/'
 import {Grid, Paper, TableCell} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class App extends Component {
   state = {
@@ -20,6 +20,7 @@ class App extends Component {
 
     mapInfo: [],
     dailyData:{},
+    sideMenuOpen: false
   }
 
 
@@ -63,63 +64,91 @@ class App extends Component {
     //return all;
   }
 
+
+  // menu handler
+  togglerClickHandler = () => {
+    this.setState((prevState) => {
+      return {sideMenuOpen: !prevState.sideMenuOpen}
+    });
+  }
+
   render() {
     const {data, country, gender, today, stats, mapInfo} = this.state;
   return (
     <div style={{height:'100%'}}>
-      {/* ****************ADD STYLES*************** */}
-      {/*<Grid container spacing={3}>
+      <header>
+        <h3> Covid 19 dashboard </h3>
+      </header>
+
+      <Grid container spacing={3}>
         <Grid item xs={12}>
+          <Paper><PieChart handleChange={this.handleChange} data={data}/></Paper>
+        </Grid>
+
+        <Grid item xs={6} sm={6}><BarChart gender={gender}/></Grid>
+        <Grid item xs={6} sm={6}><LineChart gender={gender}/></Grid>
+
+        <Grid item xs={6}><WorldMap mapInfo={mapInfo}/> </Grid>
+        <Grid item xs={6}><DataTable stats={stats}/></Grid>
+
+
+
+
+
+      </Grid>
+
+
+      {/*BarChart gender={gender}/>
+      <PieChart handleChange={this.handleChange} data={data}/>
+      <LineChart gender={gender}/>
+      <WorldMap mapInfo={mapInfo}/>
+      <DataTable stats={stats}/>
+      <Grid container spacing={3}>
+      <Grid item xs={12} sm={6}> </Grid>
+      <Grid item xs={12} sm={6}>  </Grid>
+      <Grid item xs={12} sm={6}>  </Grid>*/}
+
+      
+      {/* ****************ADD STYLES*************** *
+      </div><Grid container spacing={3}>*/}
+        {/*<Grid item xs={12}>
           <Paper>
             <Cards data={data}/>
           </Paper>
-        </Grid>
+        </Grid>*
 
         <Grid item xs={12} sm={6}>
-          <Paper>
             <PieChart handleChange={this.handleChange} data={data}/>
-          </Paper>
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <Paper>
-            <Today today={today}/>
-          </Paper>
         </Grid>
 
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={12} sm={6}>
           <Paper>
             <LineChart gender={gender}/>
           </Paper>
         </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper>xs=6 sm=3</Paper>
+        <Grid item xs={12} sm={6}>
+        <WorldMap mapInfo={mapInfo}/>
         </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper>xs=6 sm=3</Paper>
-        </Grid>
-      </Grid>
+  </Grid>*/}
+  {/*
   <Donut stats={stats}/>
     <LineChart/>
         <WorldMap mapInfo={mapInfo}/>
             <DataTable stats={stats}/>
-
-
             this method didn't work
-    <React.Fragment>
   <Router>
-  <NavbarMenu/>
+    {/*<NavbarMenu/>*
+    <SideMenu/>
   </Router>
-</React.Fragment>
+      <Grid container direction={'column'} spacing={24}>
+    <Router>
+    <SideMenu/>
+    </Router>
+    </Grid>
     */}
-
-  <Router>
-    <NavbarMenu/>
-  </Router>
-  <SideMenu/>
 
   </div>
 

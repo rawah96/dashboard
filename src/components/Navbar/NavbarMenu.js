@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Sidebar from "react-sidebar";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import {Home, About, Contact, DataTable, Side} from '../../components';
+import {Home, About, Contact, DataTable, Side, WorldMap} from '../../components';
 import style from './NavbarMenu.css'
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 
@@ -21,9 +21,9 @@ const NavbarMenu = () => {
         height: '80px'
       */}}>
         <nav className="toolbar_nav">
-          <div>
+          {/*<div>
             <Side/>
-          </div>
+          </div>*/}
           {/*hamburger icon*/}
           <div className="toolbar_logo"> LOGO </div>
           <div className="space"></div>

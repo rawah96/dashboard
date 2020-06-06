@@ -13,7 +13,6 @@ async componentDidMount() {
     this.setState({dailyData:fetchApi})
 }
 
-
   render() {
     const lineChart = (
       this.state.dailyData[0] ? 
