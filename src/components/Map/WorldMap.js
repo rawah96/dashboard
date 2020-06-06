@@ -16,7 +16,7 @@ const WorldMap  = ({mapInfo}) => {
             lng={item.countryInfo.long}
             style = {{
                 color:'white',
-                backgroundColor: 'black',
+                backgroundColor: '#CC68C8',
                 height:'25px',
                 width:'35px',
                 textAlign: 'center',

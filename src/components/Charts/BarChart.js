@@ -47,7 +47,7 @@ const LineChart =(
                  labels: ['Male','Female'],
                  datasets: [{
                    label: 'percentage of males and females with confirmed cases',
-                   backgroundColor: ['#756CFA','#C1BDFD'],
+                   backgroundColor: ['#A2D0FD','#73B8FD'],
                    //data : [confirmed.value,recovered.value,deaths.value]
                    data:[result ,result2]
                  }]

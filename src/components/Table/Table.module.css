@@ -11,16 +11,15 @@
 
 .cases:hover {
     /*background-color: teal;*/
-    text-shadow: teal 1px 0 10px;
+    text-shadow: #2E97FC 1px 0 10px;
 }
 
 .cases:active {
     background-color: lightsteelblue
 }
 
-
 .id {
-    background-color: lightseagreen;
+    background-color: #2E97FC;
     font-size: 1.2rem !important;
     font-weight: bolder !important;
     color: white !important;
