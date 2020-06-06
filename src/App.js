@@ -76,10 +76,7 @@ class App extends Component {
     const {data, country, gender, today, stats, mapInfo} = this.state;
   return (
     <container style={{height:'100%'}}>
-      <header>
-        <h3> Covid 19 dashboard </h3>
-      </header>
-
+      
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper><PieChart handleChange={this.handleChange} data={data}/></Paper>
@@ -90,10 +87,6 @@ class App extends Component {
 
         <Grid item xs={6}><WorldMap mapInfo={mapInfo}/> </Grid>
         <Grid item xs={6}><DataTable stats={stats}/></Grid>
-
-
-
-
 
       </Grid>
 

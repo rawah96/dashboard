@@ -61,8 +61,10 @@ const PieChart = (props) => {
                  data : [data.confirmed.value, data.recovered.value, data.deaths.value]
                }]
            }}
+
            options = {{
-              legends : {display:false},  
+              legends : {display:false},
+              responsive: true,
            }}
         />
     );
@@ -80,7 +82,7 @@ const PieChart = (props) => {
               duration={3}
               />
               <br/>
-              
+
             Deaths:
             <CountUp
               start={0}

@@ -1,7 +1,7 @@
 /* This component contains horizontal bar for the data */
 import React, { Component } from 'react';
 import {Bar, Line, Doughnut, Pie, HorizontalBar} from 'react-chartjs-2';
-
+import './BarChart.css'
 /*const LineChart = ({data: {confirmed, recovered, deaths, lastUpdate, country}}) => {
 
 const LineChart =(
@@ -46,10 +46,10 @@ const LineChart =(
              data={{
                  labels: ['Male','Female'],
                  datasets: [{
-                   label: 'People',
-                   backgroundColor: ['rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)'],
+                   label: 'percentage of males and females with confirmed cases',
+                   backgroundColor: ['#756CFA','#C1BDFD'],
                    //data : [confirmed.value,recovered.value,deaths.value]
-                   data:[result,result2]
+                   data:[result ,result2]
                  }]
       
              }}
@@ -61,7 +61,7 @@ const LineChart =(
       );
     
       return(
-        <div>
+        <div className="bar">
         {/*confirmed ? LineChart : null*/}
         {BarChart}
         </div>

@@ -26,7 +26,6 @@ async componentDidMount() {
                 label: 'infected',
                 fill:false, // fills space below the chart
                 backgroundColor: 'light grey',
-                borderJoinStyle: 'miter',
                 borderWidth: 1
             },{
               data: this.state.dailyData.map(({deaths}) => deaths),
