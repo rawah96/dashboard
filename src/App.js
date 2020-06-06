@@ -75,7 +75,7 @@ class App extends Component {
   render() {
     const {data, country, gender, today, stats, mapInfo} = this.state;
   return (
-    <div style={{height:'100%'}}>
+    <container style={{height:'100%'}}>
       <header>
         <h3> Covid 19 dashboard </h3>
       </header>
@@ -85,8 +85,8 @@ class App extends Component {
           <Paper><PieChart handleChange={this.handleChange} data={data}/></Paper>
         </Grid>
 
-        <Grid item xs={6} sm={6}><BarChart gender={gender}/></Grid>
-        <Grid item xs={6} sm={6}><LineChart gender={gender}/></Grid>
+        <Grid item xs={12} sm={6}><BarChart gender={gender}/></Grid>
+        <Grid item xs={12} sm={6}><LineChart gender={gender}/></Grid>
 
         <Grid item xs={6}><WorldMap mapInfo={mapInfo}/> </Grid>
         <Grid item xs={6}><DataTable stats={stats}/></Grid>
@@ -149,8 +149,7 @@ class App extends Component {
     </Router>
     </Grid>
     */}
-
-  </div>
+  </container>
 
   );
   }

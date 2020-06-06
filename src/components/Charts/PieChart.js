@@ -10,8 +10,9 @@ import { fetchCountries } from '../../data';
 import {Pie, Line, Bar, HorizontalBar, Doughnut} from 'react-chartjs-2'; 
 import { TableContainer, TableHead, TableRow, TableCell, Paper, TableBody} from '@material-ui/core';
 import Cards from '../../components/Cards/Cards'
-import {Table} from 'react-bootstrap';
-
+import {Table, FormControl} from 'react-bootstrap';
+import './PieChart.css'
+import CountUp from 'react-countup';
 
 // merging data w countries 
 // {data: {confirmed, recovered, deaths, lastUpdate}}
@@ -26,7 +27,9 @@ const PieChart = (props) => {
 
     const data = props.data;
     const confirmed = data.confirmed;
-    if(!data || !confirmed) {
+    const deaths = data.deaths;
+    const recovered= data.recovered;
+    if(!data || !confirmed || !deaths || !recovered) {
       return 'loading'
     }
 
@@ -54,10 +57,9 @@ const PieChart = (props) => {
                labels: ['confirmed', 'recovered', 'deaths'],
                datasets: [{
                  label: 'People',
-                 backgroundColor: ['rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)'],
+                 backgroundColor: ['#2E97FC','#0052A1','#A2D0FD'],
                  data : [data.confirmed.value, data.recovered.value, data.deaths.value]
                }]
-    
            }}
            options = {{
               legends : {display:false},  
@@ -65,16 +67,44 @@ const PieChart = (props) => {
         />
     );
 
-
     /*const countryMap= countries.confirmed.map((e) => e)
     console.log(countryMap)*/
-
     return(
-        <div>
-            <h1>confirmed: {confirmed.value}</h1>
-            {PieChart}
+        <div className="pie">
+            <header className="Header" align="center"> 
+            confirmed: 
+              <CountUp
+              start={0}
+              end={confirmed.value}
+              separator=','
+              duration={3}
+              />
+              <br/>
+              
+            Deaths:
+            <CountUp
+              start={0}
+              end={deaths.value}
+              separator=','
+              duration={3}
+            />
+            <br/>
 
-            <select defaultValue="" onChange={(e) => (props.handleChange(e.target.value))}>
+            Recovered:
+            <CountUp
+              start={0}
+              end={recovered.value}
+              separator=','
+              duration={3}
+            />
+
+            </header>
+            {PieChart}
+            <select defaultValue=""
+            onChange={(e) => (props.handleChange(e.target.value))}
+            className="choose"
+            align='center'
+            >
                 <option value=""> globally </option>
                 {countries.map((country,i) => <option key={i} value={country}>{country}
                 </option>)}
