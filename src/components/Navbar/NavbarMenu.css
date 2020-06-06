@@ -1,4 +1,58 @@
-a, 
+.toolbar {
+    position: fixed;
+    width: 100%;
+    background-color: 'black';
+    /*font-size: 20px;*/
+    top:0;
+    left:0;
+    height:56px;
+    background: #535353;
+}
+
+.toolbar_nav {
+    /*background: purple;*/
+    display:flex;
+    align-items: center;
+    height:100%;
+    padding:0 1rem;
+}
+
+.toolbar_logo {
+    color: 'white';
+    text-decoration: none;
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.toobar_nav-items li {
+    color:'white';
+    text-decoration: none;
+}
+
+.space {
+    flex:1
+}
+
+.toobar_nav-items li:hover,
+.toobar_nav-items li:active {
+    color: #fa923f;
+    text-shadow: #fa923f 1px 0 10px;
+    text-decoration: none;
+}
+
+.toobar_nav-items ul {
+    list-style: none;
+    color:white;
+    text-decoration: none;
+    margin: 0;
+    padding:0;
+    display: flex;
+}
+
+.toobar_nav-items li {
+    padding: 0 0.5
+}
+/*a, 
 a:hover,
 a:focus {
     color: inherit;
@@ -37,7 +91,7 @@ a:focus {
 
 #sidebar ul.components {
     padding: 20px 0;
-    /*border-bottom: 1px solid brown;*/
+    /*border-bottom: 1px solid brown;
     color: black;
 }
 
@@ -60,7 +114,7 @@ a:focus {
 #sidebar ul li.active > a,
 a[aria-expand = "true"] {
     color: black;
-    /* background: orange;*/
+    /* background: orange;
 }
 
 a[data-toggle="collapse"] {
@@ -86,4 +140,4 @@ ul ul a {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
-}
+}*/

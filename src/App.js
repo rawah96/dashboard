@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import {Home, About, Contact,
-  Cards, PieChart, BarChart, LineChart,Today,
+  Cards, PieChart, BarChart, LineChart,Today, SideMenu,
   DataTable, Donut, NavbarMenu, WorldMap} from './components'
 import {fetchData, fetchGender, fetchToday, fetchStats, cardsData, tableData, fetchDailyData} from './data/'
 import {Grid, Paper, TableCell} from '@material-ui/core'
@@ -66,7 +66,7 @@ class App extends Component {
   render() {
     const {data, country, gender, today, stats, mapInfo} = this.state;
   return (
-    <div>
+    <div style={{height:'100%'}}>
       {/* ****************ADD STYLES*************** */}
       {/*<Grid container spacing={3}>
         <Grid item xs={12}>
@@ -106,13 +106,20 @@ class App extends Component {
     <LineChart/>
         <WorldMap mapInfo={mapInfo}/>
             <DataTable stats={stats}/>
-    */}
 
-<React.Fragment>
+
+            this method didn't work
+    <React.Fragment>
   <Router>
   <NavbarMenu/>
   </Router>
 </React.Fragment>
+    */}
+
+  <Router>
+    <NavbarMenu/>
+  </Router>
+  <SideMenu/>
 
   </div>
 

@@ -1,14 +1,52 @@
 import React, {Component} from 'react';
 import Sidebar from "react-sidebar";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import {Home, About, Contact} from '../../components';
-import style from './style.css'
+import {Home, About, Contact, DataTable, Side} from '../../components';
+import style from './NavbarMenu.css'
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
-import styled from 'styled-components';
 
+/*<Nav className="ml-auto">
+                <Nav.Item><Link to={'/'} className="nav-link"> Home </Link></Nav.Item>
+                <Nav.Item><Link to={'/contact'} className="nav-link">Contact</Link></Nav.Item>
+    <Nav.Item><Link to={'/about'} className="nav-link">About</Link></Nav.Item>
+            </Nav>*/
 
-class NavbarMenu extends Component {
-  render () {
+const NavbarMenu = () => {
+    return (
+      <header className="toolbar" style={{
+        /*backgroundColor:'black',
+        color:'white',
+        marginBottom: '64px',
+        marginTop: '64px',
+        height: '80px'
+      */}}>
+        <nav className="toolbar_nav">
+          <div>
+            <Side/>
+          </div>
+          {/*hamburger icon*/}
+          <div className="toolbar_logo"> LOGO </div>
+          <div className="space"></div>
+          {/* List for navigation items  -- router links */}
+          <div className="toobar_nav-items">
+          <ul>
+            <li><Link to={'/'} className="nav-link"> Home </Link></li>
+            <li><Link to={'/contact'} className="nav-link">Contact</Link></li>
+            <li><Link to={'/about'} className="nav-link">About</Link></li>
+            </ul>
+          </div>
+        </nav>
+                
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/contact' component={Contact} />
+        <Route path='/about' component={About} />
+      </Switch>
+      </header>
+    )
+}
+
+  export default NavbarMenu
 /*
   const Styles = styled.div`
   .navbar { background-color: #222; }
@@ -68,7 +106,8 @@ class NavbarMenu extends Component {
         </Switch>
       </div>
       </Router>*/
-    return (
+
+/*      return (
       <div className="wrapper">
         <nav id="sidebar">
         <div className="sidebar-header">
@@ -76,17 +115,17 @@ class NavbarMenu extends Component {
         </div>
           <ul className="lisst-unstyled components">
             <li class="active">
-              {/*<a href= "#homeSubMenu" data-toggle="collapse" aria-expand="false" class="dropdown-toggle">*/}
+              {/*<a href= "#homeSubMenu" data-toggle="collapse" aria-expand="false" class="dropdown-toggle">
               <Link to={'/'} className="nav-link"> Home </Link>
               <Link to={'/contact'} className="nav-link">Contact</Link>
               <Link to={'/about'} className="nav-link">About</Link>
-              {/*</a>*/}
+              {/*</a>
               </li>
             {/*<ul className="collapse lisst-unstyled" id="homeSubMenu"></ul>
             </li>
             <li>
               <a href="#">About</a>
-    </li>*/}
+    </li>
     </ul>
         </nav>
         <hr />
@@ -103,7 +142,7 @@ class NavbarMenu extends Component {
             {/*<button type="button" id="sidebarCollapse" class="btn btn-info"
             >
             <span>toggle</span>
-            </button>*/}
+            </button>*
     </div>
     </nav>
         </div>
@@ -122,16 +161,12 @@ class NavbarMenu extends Component {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </Styles>*/
+    </Styles>
     )
   }
 }
 
-export default NavbarMenu
-
-
-
-
+export default NavbarMenu*/
 /*         <Router>
           <div>
             <nav /*className="navbar navbar-expand-lg navbar-light bg-light"
