@@ -85,11 +85,13 @@ class App extends Component {
           <Paper> <Donut stats={stats}/> </Paper>
         </Grid>
 
-        <Grid item xs={12} sm={6}><BarChart gender={gender}/></Grid>
-        <Grid item xs={12} sm={6}><LineChart gender={gender}/></Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper><BarChart gender={gender}/></Paper></Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper><LineChart gender={gender}/></Paper></Grid>
 
-        <Grid item xs={6}><WorldMap mapInfo={mapInfo}/> </Grid>
-        <Grid item xs={6}><DataTable stats={stats}/></Grid>
+        <Grid item xs={6}><Paper><WorldMap mapInfo={mapInfo}/></Paper> </Grid>
+        <Grid item xs={6}><Paper><DataTable stats={stats}/></Paper></Grid>
 
       </Grid>
 

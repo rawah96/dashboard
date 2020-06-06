@@ -26,9 +26,7 @@ const Donut =(
 );
 
     return (<div className="doughnut">
-        <h2> Global total number of 
-            <br/>
-            confirmed, critical, deaths, and recovered cases </h2>
+        <h2> Global totals </h2>
         {Donut}
         </div>
         )
