@@ -11,10 +11,10 @@ console.log(data)
 const Donut =(
     <Doughnut
        data={{
-           labels: ['Total confirmed cases', 'Critical Cases', 'deaths', 'recovered'],
+           labels: ['Confirmed cases', 'Critical cases', 'Deaths', 'Recovered'],
            datasets: [{
-             label: 'People',
-             backgroundColor: ['rgba(0,0,255,0.5)','rgba(0,255,0,0.5)','rgba(255,0,0,0.5)'],
+             label: 'number of people infected',
+             backgroundColor: ['#D0E7FE','#A2D0FD','#73B8FD','#2E97FC' ],
              data: [data.cases, data.critical, data.deaths, data.recovered]
         }]
 
@@ -26,7 +26,11 @@ const Donut =(
 );
 
     return (<div className="doughnut">
-        <h2> Global totals </h2>
+        <h2> Global totals 
+            <br/>
+            <br/>
+
+        </h2>
         {Donut}
         </div>
         )
