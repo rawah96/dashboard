@@ -5,6 +5,7 @@
     font-weight: bold;
     color: grey;
     text-shadow: lightskyblue;
+    
 }
 
 @media only screen and (max-width: 770px) {
@@ -18,7 +19,7 @@
     font-family: sans-serif;
     color: #444;
     /*background-color: lightsalmon;*/
-    padding: .6em 1.4em .5em 5em;
+    padding: .6em .4em .5em 5em;
     align-content: center !important;
     font-size: 1.2rem;
     width: 100%;

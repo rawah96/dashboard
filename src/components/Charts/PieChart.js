@@ -1,7 +1,5 @@
 /* This component is for displaying the infected/recovered/death cases
    globally and nationally
-
-
    TODO: make a table instead of options, where I can pick the country and display
    the results.. 
 */
@@ -50,7 +48,6 @@ const PieChart = (props) => {
           />
       );
 
-
     const PieChart =(
         <Pie
            data={{
@@ -73,7 +70,7 @@ const PieChart = (props) => {
     console.log(countryMap)*/
     return(
         <div className="pie">
-            <header className="Header" align="center"> 
+            {/*<header className="Header" align="center"> 
             confirmed: 
               <CountUp
               start={0}
@@ -98,9 +95,8 @@ const PieChart = (props) => {
               end={recovered.value}
               separator=','
               duration={3}
-            />
-
-            </header>
+            />*
+    </header>*/}
             {PieChart}
             <select defaultValue=""
             onChange={(e) => (props.handleChange(e.target.value))}

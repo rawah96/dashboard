@@ -1,8 +1,8 @@
-* {
+/** {
     scroll-padding: 20px;
     visibility: visible;
     text-justify: inter-word;
-}
+}*/
 
 .container {
     align-items: center;

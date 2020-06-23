@@ -4,10 +4,14 @@ import {Home, About, Contact,
   Cards, PieChart, BarChart, LineChart,Today, SideMenu,
   DataTable, Donut, NavbarMenu, WorldMap} from './components'
 import {fetchData, fetchGender, fetchToday, fetchStats, cardsData, tableData, fetchDailyData} from './data/'
-import {Grid, Paper, TableCell} from '@material-ui/core'
+import {Grid, Paper, TableCell, Drawer, List, ListItem, ListItemIcon, ListItemText,
+Container, Typography} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
+import { black } from 'color-name';
+import HomeIcon from "@material-ui/icons/Home";
+import RoomIcon from '@material-ui/icons/Room';
+import TableChartIcon from '@material-ui/icons/TableChart';
 class App extends Component {
   state = {
     data: {},
@@ -22,7 +26,6 @@ class App extends Component {
     dailyData:{},
     sideMenuOpen: false
   }
-
 
   async componentDidMount() {
     const data = await fetchData();
@@ -74,26 +77,135 @@ class App extends Component {
 
   render() {
     const {data, country, gender, today, stats, mapInfo} = this.state;
+    const classes = makeStyles((theme) => ({
+      drawerPaper: {width: 'inherit'},
+      link: {
+        textDecoration: 'none', 
+        color: theme.palette.text.primary
+      }
+    }));
+
   return (
-    <container style={{height:'100%'}}>
-      
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <Paper><PieChart handleChange={this.handleChange} data={data}/></Paper>
+    <Router>
+      <div style={{display: 'flex'}}>
+        <Drawer
+        style={{width: '130px'}}
+        variant="persistent" // always going to be there
+        anchor="left"
+        classes={{paper: classes.drawerPaper}}
+        open={true}
+        >
+          <List>
+            <Link to="/" className={classes.link} style={{ textDecoration: 'none' ,
+                  color: 'black',
+          }}>
+              <ListItem button>
+              <ListItemIcon>
+                    <HomeIcon />
+              </ListItemIcon>
+                <ListItemText primary={"Home"}>
+                </ListItemText>
+              </ListItem>
+            </Link>
+
+            <Link to="/Map" className={classes.link} style={{ textDecoration: 'none' ,
+                  color: 'black'
+          }}>
+              <ListItem button>
+              <ListItemIcon>
+                    <RoomIcon />
+              </ListItemIcon>
+                <ListItemText primary={"Map"}>
+                </ListItemText>
+              </ListItem>
+            </Link>
+
+            <Link to="/Table" className={classes.link} style={{ textDecoration: 'none' ,
+                  color: 'black'
+          }}>
+              <ListItem button>
+              <ListItemIcon>
+                    <TableChartIcon />
+              </ListItemIcon>
+
+                <ListItemText primary={"Table"}>
+                </ListItemText>
+              </ListItem>
+            </Link>
+          </List>
+        </Drawer>
+
+        <Switch>
+          <Route exact path="/">
+            <Container>
+              <Typography variant="h5" gutterBottom>
+                <Cards data={data}/>
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+              <div className={classes.root}>
+              <Grid container spacing={1}>
+
+                <Grid item xs={12} lg={6} md={6}>
+                    <Paper className={classes.paper}><PieChart handleChange={this.handleChange} data={data}/></Paper>
+                </Grid>
+
+                <Grid item xs={12} lg={6} md={6}>
+                  <Paper className={classes.paper}> <Donut stats={stats}/> </Paper>
+                </Grid>
+
+                <Grid item xs ={12} lg={6} md={6}>
+                  <Paper className={classes.paper}><BarChart gender={gender}/></Paper></Grid>
+                <Grid item xs={12} lg={6} md={6}>
+                  <Paper className={classes.paper}><LineChart gender={gender}/></Paper></Grid>
+                </Grid>
+                </div>
+              </Typography>
+            </Container>
+          </Route>
+
+          <Route exact path="/Map">
+            <Container>
+              <Typography variant="h3" gutterBottom>
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+              <Grid container spacing={1}>
+              <Grid item xs={12}><Paper className={classes.paper}><WorldMap mapInfo={mapInfo}/></Paper> </Grid>
+              </Grid>
+              </Typography>
+          </Container>
+          </Route>
+
+          <Route exact path="/Table">
+            <Container variant="h3 gutterBottom">
+              <Typography variant="body1" gutterBottom>
+                <Grid item xs={12}><Paper className={classes.paper}><DataTable stats={stats}/></Paper></Grid>
+              </Typography>
+            </Container>
+          </Route>
+        </Switch>
+      </div>
+
+
+    {/*<div className={classes.root}>
+      <Grid container spacing={1}>
+
+        <Grid item xs={3}>
+            <Paper className={classes.paper}><PieChart handleChange={this.handleChange} data={data}/></Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper> <Donut stats={stats}/> </Paper>
+        
+        <Grid item xs={3}>
+          <Paper className={classes.paper}> <Donut stats={stats}/> </Paper>
         </Grid>
 
-        <Grid item xs={12} sm={6}>
-          <Paper><BarChart gender={gender}/></Paper></Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper><LineChart gender={gender}/></Paper></Grid>
+        <Grid item xs ={6}>
+          <Paper className={classes.paper}><BarChart gender={gender}/></Paper></Grid>
+        <Grid item xs={6}>
+          <Paper className={classes.paper}><LineChart gender={gender}/></Paper></Grid>
 
-        <Grid item xs={6}><Paper><WorldMap mapInfo={mapInfo}/></Paper> </Grid>
-        <Grid item xs={6}><Paper><DataTable stats={stats}/></Paper></Grid>
+        <Grid item xs={6}><Paper className={classes.paper}><WorldMap mapInfo={mapInfo}/></Paper> </Grid>
+        <Grid item xs={12}><Paper className={classes.paper}><DataTable stats={stats}/></Paper></Grid>
 
-      </Grid>
+      </Grid> */}
 
 
       {/*BarChart gender={gender}/>
@@ -146,8 +258,10 @@ class App extends Component {
     <SideMenu/>
     </Router>
     </Grid>
-    */}
-  </container>
+    
+    </div>*/}
+
+</Router>
 
   );
   }

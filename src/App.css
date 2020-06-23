@@ -1,9 +1,9 @@
 *{
-  background-color: rgba(169, 200, 230, 0.212);
   justify-content: center;
   align-content: center;
 }
 
+/*
 .container {
   display: flex;
   align-items: center;
@@ -20,6 +20,7 @@
     width: 100%;
   }
 }
+
 
 /*
 @media (prefers-reduced-motion: no-preference) {

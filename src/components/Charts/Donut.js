@@ -7,7 +7,6 @@ if(!stats || !stats[0]) {
     return 'loading'
 }
 const data = stats[0];
-console.log(data)
 const Donut =(
     <Doughnut
        data={{
@@ -26,11 +25,10 @@ const Donut =(
 );
 
     return (<div className="doughnut">
-        <h2> Global totals 
+        {/*<h2> Global totals 
             <br/>
             <br/>
-
-        </h2>
+        </h2>*/}
         {Donut}
         </div>
         )
